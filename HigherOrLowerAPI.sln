@@ -3,9 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HigherOrLowerAPI", "HigherOrLowerAPI\HigherOrLowerAPI.csproj", "{275F1B1E-7AD9-4E1B-9F2A-21C3455DE310}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HigherOrLowerAPI", "HigherOrLowerAPI\HigherOrLowerAPI.csproj", "{275F1B1E-7AD9-4E1B-9F2A-21C3455DE310}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF} = {2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HigherOrLowerData", "HigherOrLowerBusiness\HigherOrLowerData.csproj", "{2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HigherOrLowerData", "HigherOrLowerBusiness\HigherOrLowerData.csproj", "{2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{981EA337-37E8-4056-A5F6-13A48B512DA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mysql", "mysql", "{DC439B1E-03E9-4817-97C0-F9CA298275B9}"
+	ProjectSection(SolutionItems) = preProject
+		mysql\mysql_scripts.sql = mysql\mysql_scripts.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{4925B593-3FE4-483D-9674-ED846B7D2B83}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject.HigherOrLower", "TestProject.HigherOrLower\TestProject.HigherOrLower.csproj", "{C975D22F-6D79-4479-B2A5-CEF22B6AEBBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +38,10 @@ Global
 		{2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C975D22F-6D79-4479-B2A5-CEF22B6AEBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C975D22F-6D79-4479-B2A5-CEF22B6AEBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C975D22F-6D79-4479-B2A5-CEF22B6AEBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C975D22F-6D79-4479-B2A5-CEF22B6AEBBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

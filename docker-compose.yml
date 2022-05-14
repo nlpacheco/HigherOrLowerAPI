@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mysql_HigherOrLower:
+    container_name: mysql_HigherOrLower
+    image: mysql:8.0.29
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_USER: higherlower
+      MYSQL_PASSWORD: HIGHERLOWER
+      MYSQL_DATABASE: higherlower
+      MYSQL_ROOT_PASSWORD: nlpacheco
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+

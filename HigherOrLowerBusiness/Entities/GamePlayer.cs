@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,14 +10,14 @@ using System.Threading.Tasks;
 namespace HigherOrLowerData.Entities
 {
     [Table("game_players")]
-    internal class GamePlayer
+    [Index(nameof(GameId), nameof(PlayerName), IsUnique = true)]
+    public class GamePlayer
     {
         [Key]
-        public int Id { get; set; }
-
-        public Game Game { get; set; }
+        public uint Id { get; set; }
 
         [Column("player_name")]
+        [MaxLength(100)]
         public string PlayerName { get; set; }
 
         [Column("wins")]
@@ -28,15 +29,20 @@ namespace HigherOrLowerData.Entities
         [Column("round_position")]
         public int RoundPosition { get; set; }
 
-        public GamePlayer(Game game, string playerName, int roundPosition)
-        {
-            this.Game = game;
-            this.PlayerName = playerName;
-            Wins = 0;   
-            Loses = 0;  
-            this.RoundPosition = roundPosition; 
-        }
+        [Column("game_id")]
+        public uint GameId { get; set; }
+        
+        [ForeignKey("GameId")]
+        public Game Game { get; set; }
 
-
+            
+        //public GamePlayer(uint gameId, string playerName, int roundPosition)
+        //{
+        //    this.GameId= gameId;
+        //    this.PlayerName = playerName;
+        //    Wins = 0;   
+        //    Loses = 0;  
+        //    this.RoundPosition = roundPosition; 
+        //}
     }
 }
