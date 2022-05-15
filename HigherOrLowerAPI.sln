@@ -11,6 +11,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HigherOrLowerData", "HigherOrLowerBusiness\HigherOrLowerData.csproj", "{2A676DE0-8B14-4CDA-BE1D-E856B3D7E2CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{981EA337-37E8-4056-A5F6-13A48B512DA8}"
+	ProjectSection(SolutionItems) = preProject
+		buildGame = buildGame
+		docker-compose-dev.yml = docker-compose-dev.yml
+		docker-compose.yml = docker-compose.yml
+		dockerfile.buildGame.yml = dockerfile.buildGame.yml
+		start-docker-mysql-dev.bat = start-docker-mysql-dev.bat
+		stop-docker-mysql-dev.bat = stop-docker-mysql-dev.bat
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mysql", "mysql", "{DC439B1E-03E9-4817-97C0-F9CA298275B9}"
 	ProjectSection(SolutionItems) = preProject

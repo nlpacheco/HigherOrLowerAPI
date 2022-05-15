@@ -15,11 +15,3 @@ services:
     ports:
       - "3306:3306"
 
-  higherlowergameapi:
-    image: nlpacheco/higherlowergameapi
-    build:
-      context: .
-      dockerfile: dockerfile.buildGame.yml
-    container_name: higherlowergameapi
-    ports:
-      - "5000:80"

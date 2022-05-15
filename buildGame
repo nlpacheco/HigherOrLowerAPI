@@ -1,0 +1,1 @@
+docker build -f dockerfile.buildGame.yml -t nlpacheco/higherlowergameapi .
