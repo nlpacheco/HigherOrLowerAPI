@@ -14,7 +14,7 @@ COPY HigherOrLowerAPI/. ./HigherOrLowerAPI/
 COPY HigherOrLowerBusiness/. ./HigherOrLowerBusiness/
 COPY TestProject.HigherOrLower/. ./TestProject.HigherOrLower/
 WORKDIR /source/HigherOrLowerAPI
-RUN dotnet publish -c release -o /app --no-restore
+RUN dotnet publish -c release -o /app 
 
 # test stage -- exposes optional entrypoint
 # target entrypoint with: docker build --target test

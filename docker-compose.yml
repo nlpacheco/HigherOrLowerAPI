@@ -21,5 +21,7 @@ services:
       context: .
       dockerfile: dockerfile.buildGame.yml
     container_name: higherlowergameapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Staging
     ports:
       - "5000:80"
