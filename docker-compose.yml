@@ -21,6 +21,8 @@ services:
       context: .
       dockerfile: dockerfile.buildGame.yml
     container_name: higherlowergameapi
+    depends_on:
+      - mysql_HigherOrLower
     environment:
       ASPNETCORE_ENVIRONMENT: Staging
     ports:
