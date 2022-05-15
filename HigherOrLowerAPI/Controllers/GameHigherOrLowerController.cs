@@ -1,6 +1,5 @@
 ﻿using HigherOrLowerAPI.DTO;
 using HigherOrLowerAPI.Tools;
-using HigherOrLowerData;
 using HigherOrLowerData.Business;
 using HigherOrLowerData.Entities;
 using HigherOrLowerData.Responses;
@@ -52,7 +51,8 @@ namespace HigherOrLowerAPI.Controllers
         /// </remarks>
         /// <response code="200">Returns the game</response>
         /// <response code="404">If the game is not found</response>
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{gameId}", Name = "GetGameById")]
         public async Task<ActionResult<GameDTO>> GetGameById(uint gameId)
         {
@@ -76,6 +76,7 @@ namespace HigherOrLowerAPI.Controllers
 
         /// <summary>
         /// Create a new HiherOrLower game. 
+        /// The list of players has to have at least 2 names. Duplicated names are not allowed.
         /// </summary>
         /// <param name="newGameDTO">Object with a list of players. The list has to have at least 2 players. Duplicated names are not allowed.</param>
         /// <returns>GameDTO</returns>
@@ -139,6 +140,7 @@ namespace HigherOrLowerAPI.Controllers
         /// <param name="gameId">Game identification</param>
         /// <returns></returns>
         /// <response code="400">Bad Request</response>
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{gameId}", Name = "PutGame")]
         public ActionResult PutGameMove(uint gameId)
         {
@@ -152,6 +154,7 @@ namespace HigherOrLowerAPI.Controllers
         /// <param name="gameId">Game identification</param>
         /// <returns></returns>
         /// <response code="400">Bad Request</response>
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpDelete("{gameId}", Name = "DeleteGame")]
         public ActionResult DeleteGame(uint gameId)
         {
@@ -167,7 +170,18 @@ namespace HigherOrLowerAPI.Controllers
 
 
 
-
+        /// <summary>
+        /// Get the data from a specific move.
+        /// </summary>
+        /// <param name="gameId"></param>
+        /// <param name="moveId"></param>
+        /// <returns>Info about the move such as player name, guess, previous e next cards, etc</returns>
+        /// <response code="200">Returns the game move details </response>
+        /// <response code="404">If the game or move is not found</response>
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        /// 
         [HttpGet("{gameId}/move/{moveId}", Name = "GetGameMoveById")]
         public async Task<ActionResult<GameMoveDTO>> GetGameMoveById(uint gameId, uint moveId)
         {
@@ -195,7 +209,21 @@ namespace HigherOrLowerAPI.Controllers
             
         }
 
-
+        /// <summary>
+        /// Accept a new move from a player. The player should provide her or his guess about the next card.
+        /// IsHigher should be true if the player guess next card has a bigger number than previous card.
+        /// IsHigher should be false if the player guess next card has a smaller number.
+        /// The sequence of players has to follow the list provided during the game creation.
+        /// </summary>
+        /// <param name="gameId"></param>
+        /// <param name="gameMoveDTO"></param>
+        /// <returns>Message with result of player's guess and the next card.</returns>
+        /// <response code="201">Returns the game response after the move </response>
+        /// <response code="400">If the game has already finished</response>
+        /// <response code="404">If the game is not found</response>
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPost("{gameId}/move", Name = "PostGameMove")]
         public async Task<ActionResult<GameMoveDTO>> PostGameMove(uint gameId, [FromBody] NewGameMoveDTO gameMoveDTO)
         {
@@ -254,7 +282,11 @@ namespace HigherOrLowerAPI.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns the game</response>
+        /// <response code="400">If the game has already finished</response>
         /// <response code="404">If the game is not found</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{gameId}/score", Name = "GetGameScore")]
         public async Task<ActionResult<GameScoreDTO>> GetGameScore(uint gameId)
         {
