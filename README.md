@@ -16,11 +16,20 @@ The Solution has 3 projects:
 
 ### Game API
 
-The API specification only required human text messages. 
+The API specification required only human text messages. 
 
-This is not the best kind of back-end API. Usually, the texts and translations are a front-end responsibility.
+This is not the best type of back-end API. Usually, the texts and translations are front-end responsibility.
 
 Therefore, the solution API calls always respond to client using a json with user message as required but also enough properties to correctly communicate to user what is happening.
+
+The main entrypoins are:
+
+- Post /gameHigherOrLower: create a new game. It requires a list of player´s names.
+- Post /gameHigherOrLower/{gameId}/move: register a game move. 
+- Get /gameHigherOrLower/{gameId}/score: get the game score.
+
+
+The complete entrypoint list is available through Swagger UI (baseURL/swagger). 
 
 
 ### Database
@@ -28,9 +37,12 @@ Therefore, the solution API calls always respond to client using a json with use
 The Entity Framework is configured to use MySQL 8 but not migrations. 
 Production Database is too important to rely on migrations blindly.
 
-For testing, the project uses SQLite in-memory database to speed up the use case tests.
+For testing, the project uses SQLite in-memory database to speed up the use case tests. 
+In this case, EF6 creates the database objects.
+
 
 To create a MySQL 8 instance, there is a docker-compose file available: docker-compose-dev.yml
+The startup script to build runs automatically. It creates all tables and constraints.
 
 There are two scripts to do that easily: 
 
