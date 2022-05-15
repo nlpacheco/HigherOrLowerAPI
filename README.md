@@ -77,6 +77,10 @@ The docker-compose.yml instantiates the MySQL, builds and starts the application
 
 The building process is done by the dockerfile.buildGame.yml that uses a Microsoft sdk image to build an application image.
 
+The current building process create a release bin but it is not ready for production yet. 
+A lot of improvements are necessary such as global logging configuration, disable swagger and EF logging, open password in config file, certificates not installed, etc.
+
+
 
 To run the application using docker: 
 
@@ -85,12 +89,23 @@ docker-compose up -d
 ```
 
 
+
 The script `buildGame` is a shortcut to force the application rebuilding.
 
 buildGame:
 
 `docker build -f dockerfile.buildGame.yml -t nlpacheco/higherlowergameapi .`
 
+
+### Swagger
+
+The Swagger is enable even using the docker build.
+
+It is available at *baseURL*/swagger.
+
+That is the url when the application is running via docker-compose.yml: 
+
+http://localhost:5000/swagger
 
 
 
